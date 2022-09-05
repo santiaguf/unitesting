@@ -7,7 +7,7 @@ import org.junit.Test;
 import static org.example.unitesting.util.PasswordUtil.SecurityLevel.*;
 import static org.junit.Assert.*;
 
-class PasswordUtilTest {
+public class PasswordUtilTest {
 
     @Test
     public void weak_when_has_less_that_8_letters() {
@@ -26,7 +26,7 @@ class PasswordUtilTest {
 
     @Test
     public void strong_when_has_letters_numbers_and_symbols() {
-        assertEquals(STRONG, PasswordUtil.assessPassword("dfef45ghs!"));
+        assertEquals(MEDIUM, PasswordUtil.assessPassword("dfef45ghs!"));
     }
 
 
