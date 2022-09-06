@@ -4,6 +4,7 @@ import org.example.unitesting.movies.data.MovieRepository;
 import org.example.unitesting.movies.model.Genre;
 import org.example.unitesting.movies.model.Movie;
 import org.hamcrest.CoreMatchers;
+import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mockito;
 
@@ -16,9 +17,10 @@ import static org.junit.Assert.*;
 
 public class MovieServiceShould {
 
-    @Test
-    public void return_movies_by_genre() {
+    private MovieService movieService;
 
+    @Before
+    public void setUp() throws Exception {
         MovieRepository movieRepository = Mockito.mock(MovieRepository.class);
 
         Mockito.when(movieRepository.findAll()).thenReturn(
@@ -33,12 +35,20 @@ public class MovieServiceShould {
                 )
         );
 
-        MovieService movieService = new MovieService(movieRepository);
+        movieService = new MovieService(movieRepository);
+    }
 
+    @Test
+    public void return_movies_by_genre() {
         Collection<Movie> movies = movieService.findMoviesByGenre(Genre.COMEDY);
-
         List<Integer> movieIds = movies.stream().map(movie -> movie.getId()).collect(Collectors.toList());
-
         assertThat(movieIds, CoreMatchers.is(Arrays.asList(3, 6)));
+    }
+
+    @Test
+    public void return_movies_by_length() {
+        Collection<Movie> movies = movieService.findMoviesByLength(120);
+        List<Integer> movieIds = movies.stream().map(movie -> movie.getId()).collect(Collectors.toList());
+        assertThat(movieIds, CoreMatchers.is(Arrays.asList(2, 3, 4, 5, 6)));
     }
 }
