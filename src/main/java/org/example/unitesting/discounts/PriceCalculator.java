@@ -5,7 +5,6 @@ import java.util.List;
 
 public class PriceCalculator {
 
-
     private List<Double> prices = new ArrayList<>();
     private double discount = 0;
 
