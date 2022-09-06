@@ -1,5 +1,6 @@
 package org.example.unitesting.player;
 
+import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mockito;
 
@@ -7,9 +8,14 @@ import static org.junit.Assert.*;
 
 public class PlayerTest {
 
+    private Dice dice;
+    @Before
+    public void setup() {
+        dice = Mockito.mock(Dice.class);
+    }
+
     @Test
     public void loses_when_dice_number_is_to_low() {
-        Dice dice = Mockito.mock(Dice.class);
 
         Mockito.when(dice.roll()).thenReturn(2);
 
@@ -19,7 +25,6 @@ public class PlayerTest {
 
     @Test
     public void wins_when_dice_number_is_big() {
-        Dice dice = Mockito.mock(Dice.class);
 
         Mockito.when(dice.roll()).thenReturn(4);
 
