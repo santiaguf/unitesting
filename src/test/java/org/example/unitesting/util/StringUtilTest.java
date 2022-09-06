@@ -3,7 +3,7 @@ package org.example.unitesting.util;
 import org.junit.Assert;
 import org.junit.Test;
 
-import static org.junit.jupiter.api.Assertions.assertThrows;
+//import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class StringUtilTest {
 
@@ -27,10 +27,11 @@ public class StringUtilTest {
         Assert.assertEquals("", StringUtil.repeat("hola", -1));
     }
 
+    /* available in Junit 5+
     @Test
     public void repeat_string_negative_times_assert_throw() {
         assertThrows(IllegalArgumentException.class, () -> {
             StringUtil.repeat("hola", -1);
         });
-    }
+    } */
 }

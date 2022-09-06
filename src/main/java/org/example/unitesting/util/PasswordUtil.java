@@ -21,6 +21,6 @@ public class PasswordUtil {
             return SecurityLevel.MEDIUM;
         }
 
-        return SecurityLevel.MEDIUM;
+        return SecurityLevel.STRONG;
     }
 }
