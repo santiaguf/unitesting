@@ -18,6 +18,6 @@ public class DiceTest {
     public void return_two() {
         Dice dice = new Dice(6);
 
-        assertTrue("is lower than six", dice.roll() < 6);
+        assertTrue("is lower than six", dice.roll() <= 6);
     }
 }
