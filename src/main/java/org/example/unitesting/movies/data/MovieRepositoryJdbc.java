@@ -26,18 +26,17 @@ public class MovieRepositoryJdbc implements MovieRepository {
     public Movie findById(long id) {
         Object[] args = { id };
         return jdbcTemplate.queryForObject("select * from movies where id = ?", args, movieMapper);
-
     }
 
     @Override
     public Collection<Movie> findAll() {
         return jdbcTemplate.query("select * from movies", movieMapper);
-
     }
 
 
     @Override
     public void saveOrUpdate(Movie movie) {
-
+        jdbcTemplate.update("insert into movies (name, minutes, genre) values (?,?,?)",
+                movie.getName(), movie.getMinutes(), movie.getGenre().toString());
     }
 }

@@ -55,6 +55,17 @@ public class MovieRepositoryIntegrationTest {
         assertThat(movie, is(new Movie(2,"Memento", 113, Genre.THRILLER)));
     }
 
+    @Test
+    public void insert_a_movie() {
+        Movie movie = new Movie("Super 8", 112, Genre.THRILLER);
+
+        movieRepository.saveOrUpdate(movie);
+
+        Movie movieFromDb = movieRepository.findById(4);
+
+        assertThat(movieFromDb, is(movie));
+    }
+
     @After
     public void tearDown() throws Exception {
         final Statement s = dataSource.getConnection().createStatement();
