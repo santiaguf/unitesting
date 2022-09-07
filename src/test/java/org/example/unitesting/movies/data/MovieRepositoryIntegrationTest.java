@@ -63,7 +63,7 @@ public class MovieRepositoryIntegrationTest {
 
         Movie movieFromDb = movieRepository.findById(4);
 
-        assertThat(movieFromDb, is(movie));
+        assertThat(movieFromDb, is(new Movie(4, "Super 8", 112, Genre.THRILLER)));
     }
 
     @After
