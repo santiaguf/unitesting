@@ -56,6 +56,13 @@ public class MovieRepositoryIntegrationTest {
     }
 
     @Test
+    public void load_movie_by_name() {
+        Movie movie = movieRepository.findByName("Matrix");
+
+        assertThat(movie, is(new Movie(3,"Matrix", 136, Genre.ACTION)));
+    }
+
+    @Test
     public void insert_a_movie() {
         Movie movie = new Movie("Super 8", 112, Genre.THRILLER);
 
@@ -69,6 +76,7 @@ public class MovieRepositoryIntegrationTest {
     @After
     public void tearDown() throws Exception {
         final Statement s = dataSource.getConnection().createStatement();
+
         s.execute("drop all objects delete files"); // "shutdown" is also enough for mem db
     }
 
